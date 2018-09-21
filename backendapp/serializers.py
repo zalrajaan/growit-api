@@ -9,7 +9,8 @@ class PlantsSerializer(serializers.ModelSerializer):
         fields = ['local_name', 'scientific_name', 'location', 'watering_frequency','fertilizing_frequency','date_created','description','description_short','color', 'img', 'quantity']
 
 class UserCreateSerializer(serializers.ModelSerializer):
-	password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True)
+
     class Meta:
         model = User
         fields = ['username', 'password']
