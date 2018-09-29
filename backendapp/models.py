@@ -51,47 +51,18 @@ class Plant(Product):
     watering_frequency = models.IntegerField()
     fertilizing_frequency = models.IntegerField()
     date_created = models.DateField(auto_now_add=True)
-    #description = models.TextField()
-    #description_short = models.CharField(max_length=120)
     color = models.CharField(max_length=120)
-    #img = models.ImageField()
-    #quantity = models.IntegerField()
-    #price = models.IntegerField()
     care_level = models.CharField(max_length=120, choices= care_level_choices)
     lighting = models.CharField(max_length=120, choices= lighting_level)
     pet_friendly = models.BooleanField()
     size = models.CharField(max_length=120, choices= sizechoices)
     theme = models.CharField(max_length=120)
     season = models.CharField(max_length=120, choices= season_type)
-    #category= models.CharField(max_length=120)
-    #stage_1day = models.IntegerField()
-    #stage_2day = models.IntegerField()
-    #stage_3day = models.IntegerField()
-    #stage_1des = models.CharField(max_length=120)
-    #stage_2des = models.CharField(max_length=120)
-    #stage_3des = models.CharField(max_length=120)
-    #stage_1det = models.TextField()
-    #stage_2det = models.TextField()
-    #stage_3det = models.TextField()
-    #stage_4det = models.TextField()
-    #plant_height_cm = a list of cm ()
-    #plant_height_days = 
-    # product = models.ForeignKey(Product, on_delete=models.CASCADE)
-
-
-
 
     def __str__(self):
         return self.name
 
 class Accessory(Product):
-    #name = models.CharField(max_length=120)
-    #quantity = models.IntegerField()
-    #description = models.TextField()
-    #img = models.ImageField()
-    #category= models.CharField(max_length=120)
-    #price = models.IntegerField()
-
     
     def __str__(self):
         return self.name
