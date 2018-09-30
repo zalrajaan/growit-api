@@ -1,6 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+class Profile(models.Model):
+    user = models.OneToOneField(User,on_delete=models.CASCADE)
+    phone_number = models.IntegerField()
+    city = models.CharField(max_length=120)
+    block = models.IntegerField(blank = True, null = True)
+    street = models.CharField(max_length=120)
+    avenue = models.IntegerField(blank = True, null = True)
+    house_number = models.IntegerField()
+    apt_number = models.IntegerField(blank = True, null = True)
+    del_instructions = models.CharField(max_length=120)
+
+
 care_level_choices = (
         ('easy', 'easy'),
         ('moderate', 'moderate'),
@@ -29,6 +42,8 @@ sizechoices = (
 
 class Category(models.Model):
     category= models.CharField(max_length=120)
+    img = models.ImageField()
+
 
     def __str__(self):
         return self.category
@@ -58,7 +73,18 @@ class Plant(Product):
     size = models.CharField(max_length=120, choices= sizechoices)
     theme = models.CharField(max_length=120)
     season = models.CharField(max_length=120, choices= season_type)
-
+    stage_1day = models.IntegerField(default=1)
+    stage_2day = models.IntegerField(default=1)
+    stage_3day = models.IntegerField(default=1)
+    stage_1des = models.CharField(max_length=120, default="a")
+    stage_2des = models.CharField(max_length=120, default="a")
+    stage_3des = models.CharField(max_length=120, default="a")
+    stage_1det = models.TextField(default="a")
+    stage_2det = models.TextField(default="a")
+    stage_3det = models.TextField(default="a")
+    stage_4det = models.TextField(default="a")
+    tracking_code = models.TextField(default="a")
+    
     def __str__(self):
         return self.name
 

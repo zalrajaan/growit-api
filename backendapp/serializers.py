@@ -1,9 +1,12 @@
 from rest_framework import serializers
-from .models import Plant, Accessory, Product,Category, Stage, PlantCycle, Order, ProductItem
+from .models import Plant, Accessory, Product,Category, Stage, PlantCycle, Order, ProductItem, Profile
 from django.contrib.auth.models import User
 from rest_framework_jwt.settings import api_settings
 
-
+class ProfilSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Profile
+        fields = '__all__'
 
 class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
@@ -49,25 +52,24 @@ class Plant_cycleSerializer(serializers.ModelSerializer):
 
 class UserCreateSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
-    token = serializers.CharField(read_only=True)
-    
+    token = serializers.CharField(read_only=True, allow_blank=True)
+
     class Meta:
         model = User
-        fields = ['username', 'password', 'email']
+        fields = ['username', 'password', 'email','token']
 
     def create(self, validated_data):
-        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
-        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER 
-        payload = jwt_payload_handler(new_user)
-        token = jwt_encode_handler(payload)
-
-
         username = validated_data['username']
         password = validated_data['password']
         email = validated_data['email']
         new_user = User(username=username, email=email)
         new_user.set_password(password)
         new_user.save()
+
+        jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
+        jwt_encode_handler = api_settings.JWT_ENCODE_HANDLER 
+        payload = jwt_payload_handler(new_user)
+        token = jwt_encode_handler(payload)
 
         validated_data["token"] = token
         return validated_data
