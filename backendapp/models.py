@@ -12,6 +12,9 @@ class Profile(models.Model):
     house_number = models.IntegerField()
     apt_number = models.IntegerField(blank = True, null = True)
     del_instructions = models.CharField(max_length=120)
+    
+    def __str__(self):
+        return str(self.user)
 
 
 care_level_choices = (
@@ -84,7 +87,7 @@ class Plant(Product):
     stage_3det = models.TextField(default="a")
     stage_4det = models.TextField(default="a")
     tracking_code = models.TextField(default="a")
-    
+
     def __str__(self):
         return self.name
 
@@ -123,8 +126,13 @@ class ProductItem(models.Model):
 
     def __str__(self):
         return str(self.order)
-#class TrackingHistory(models.Model):
 
-    #planted_on = models.DateField(auto_now_add=True)
-#   notify = models.BooleanField()
-#   active = models.BooleanField()
+class TrackingHistory(models.Model):
+
+    planted_on = models.DateField(auto_now_add=True)
+    active = models.BooleanField()
+    plant = models.ForeignKey(Plant,on_delete=models.CASCADE )
+    profile = models.ForeignKey(Profile,on_delete=models.CASCADE )
+
+    def __str__(self):
+        return str(self.plant)
