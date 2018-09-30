@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView
 from .serializers import PlantsSerializer, UserCreateSerializer, AccessoriesSerializer, OrderSerializer, ProfilSerializer, CategorySerializer
-from .models import Plant, Accessory, Order, Product, ProductItem, Profile
+from .models import Plant, Accessory, Order, Product, ProductItem, Profile, Category
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -59,5 +59,5 @@ class DetailViewAccessories(RetrieveAPIView):
     lookup_url_kwarg = 'object_id'
 
 class CategoryList(ListAPIView):
-    queryset = Plant.objects.all()
+    queryset = Category.objects.all()
     serializer_class = CategorySerializer
