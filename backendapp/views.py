@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView
-from .serializers import PlantsSerializer, UserCreateSerializer, AccessoriesSerializer, OrderSerializer, ProfilSerializer, CategorySerializer
+from .serializers import PlantsSerializer, UserCreateSerializer, AccessoriesSerializer, OrderSerializer, ProfilSerializer, CategorySerializer, ProfilDetailSerializer
 from .models import Plant, Accessory, Order, Product, ProductItem, Profile, Category
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -9,11 +9,17 @@ from rest_framework import status
 class ProfileCreateAPIView(CreateAPIView):
     serializer_class = ProfilSerializer
 
+class ProfileDetailAPIView(RetrieveAPIView):
+    queryset = Profile.objects.all()
+    serializer_class = ProfilDetailSerializer
+    lookup_field = 'user_id'
+    lookup_url_kwarg = 'user_id'
+
 class ProfileUpdateView(RetrieveUpdateAPIView):
     queryset = Profile.objects.all()
     serializer_class = ProfilSerializer
-    lookup_field = 'id'
-    lookup_url_kwarg = 'profile_id'
+    lookup_field = 'user_id'
+    lookup_url_kwarg = 'user_id'
 
 class UserCreateAPIView(CreateAPIView):
     serializer_class = UserCreateSerializer

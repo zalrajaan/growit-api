@@ -8,6 +8,18 @@ class ProfilSerializer(serializers.ModelSerializer):
         model = Profile
         fields = '__all__'
 
+class UsersListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id','username']
+
+class ProfilDetailSerializer(serializers.ModelSerializer):
+    user = UsersListSerializer()
+    class Meta:
+        model = Profile
+        fields = '__all__'
+
+
 class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
