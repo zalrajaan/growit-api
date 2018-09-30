@@ -22,7 +22,7 @@ class AccessoriesList(ListAPIView):
 
 class Orderlist(APIView):
     def get(self, request, *args, **kwargs):
-        queryset = Order.objects.filer(request)
+        queryset = Order.objects.filer(user=request.user)
         json_query = OrderSerializer(queryset, many=True).data
         return Response(json_query)
 
