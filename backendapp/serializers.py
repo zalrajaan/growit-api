@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Plant, Accessory, Product,Category, Stage, PlantCycle, Order, ProductItem, Profile
+from .models import Plant, Accessory, Product,Category, Stage, PlantCycle, Order, ProductItem, Profile, TrackingHistory
 from django.contrib.auth.models import User
 from rest_framework_jwt.settings import api_settings
 
@@ -23,7 +23,7 @@ class ProfilDetailSerializer(serializers.ModelSerializer):
 class PlantsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Plant
-        # fields = ['id','local_name', 'scientific_name', 'location', 'watering_frequency','fertilizing_frequency','date_created','description','description_short','color', 'img', 'quantity']
+        # fields = ['id','fertilizing_frequency']
         fields = '__all__'
         # exclude = []
 
@@ -85,3 +85,8 @@ class UserCreateSerializer(serializers.ModelSerializer):
 
         validated_data["token"] = token
         return validated_data
+
+class TrackingHistorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TrackingHistory
+        fields = '__all__'

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories,Orderlist, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView
+from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy
 from rest_framework_jwt.views import obtain_jwt_token
 
 
@@ -14,7 +14,7 @@ urlpatterns = [
 #ListView
     path('plantslist/', PlantsList.as_view(), name='plantslist'),
     path('accessorieslist/', AccessoriesList.as_view(), name='accessorieslist'),
-    path('orderlist/', Orderlist.as_view(), name='orderlist'),
+    path('order/<int:user_id>/', CustomerOrder.as_view(), name='order'),
     path('categorieslist/', CategoryList.as_view(), name='categorieslist'),
 
 #Create
@@ -24,7 +24,15 @@ urlpatterns = [
 #DetailView
     path('plant/<int:object_id>/', DetailViewPlant.as_view(), name='plant'),
     path('accessories/<int:object_id>/', DetailViewAccessories.as_view(), name='accessories'),
-   
+
+#TrackingHistory
+    path('track/', TrackingHistoryCreateView.as_view(), name='track'),
+    path('tracklist/<int:user_id>', TrackingHistoryListView.as_view(), name='tracklist'),
+    path('trackupdate/<int:id>/', TrackingHistoryUpdateView.as_view(), name='trackupdate'),
+
+#HTMLPage
+    path('privacypolicy/', privacy_policy, name='privacypolicy'),
+
 
 
 

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
+
 class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     phone_number = models.IntegerField()
@@ -115,6 +116,14 @@ class PlantCycle(models.Model):
 class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     items = models.ManyToManyField(Product, through ='ProductItem')
+    date_created = models.DateField(auto_now_add=True)
+    # total_price = models.DecimalField(max_digits=10, decimal_places=3)
+
+    # def calculate_order_price(self):
+    #     self.total_price = 0
+    #     for item in self.items:
+    #         self.total_price += item.price
+    #     items.save()
 
     def __str__(self):
         return self.user.username + "order: " + str(self.id)
@@ -132,7 +141,7 @@ class TrackingHistory(models.Model):
     planted_on = models.DateField(auto_now_add=True)
     active = models.BooleanField()
     plant = models.ForeignKey(Plant,on_delete=models.CASCADE )
-    profile = models.ForeignKey(Profile,on_delete=models.CASCADE )
+    user = models.ForeignKey(User,on_delete=models.CASCADE )
 
     def __str__(self):
         return str(self.plant)
