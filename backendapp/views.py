@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView, CreateAPIView, RetrieveAPIView, RetrieveUpdateAPIView
-from .serializers import PlantsSerializer, UserCreateSerializer, AccessoriesSerializer, OrderSerializer, ProfilSerializer, CategorySerializer, ProfilDetailSerializer, TrackingHistorySerializer
-from .models import Plant, Accessory, Order, Product, ProductItem, Profile, Category, TrackingHistory
+from .serializers import PlantsSerializer, UserCreateSerializer, AccessoriesSerializer, OrderSerializer, ProfilSerializer, CategorySerializer, ProfilDetailSerializer, TrackingHistorySerializer, PlantHeightSerializer
+from .models import Plant, Accessory, Order, Product, ProductItem, Profile, Category, TrackingHistory, PlantHeight
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
@@ -83,11 +83,23 @@ class TrackingHistoryListView(APIView):
         json_query = TrackingHistorySerializer(queryset, many=True).data
         return Response(json_query)
 
-
 class TrackingHistoryUpdateView(RetrieveUpdateAPIView):
     queryset = TrackingHistory.objects.all()
     serializer_class = TrackingHistorySerializer
     lookup_field = 'id'
     lookup_url_kwarg = 'id'
 
+class PlantHeightCreateView(CreateAPIView):
+    serializer_class = PlantHeightSerializer
 
+# class PlantHeightListView(APIView):
+#     def get(self, request, *args, track_id, **kwargs):
+#         queryset = PlantHeight.objects.filter(track=request.track)
+#         json_query = PlantHeightSerializer(queryset, many=True).data
+#         return Response(json_query)
+
+class PlantHeightUpdateView(RetrieveUpdateAPIView):
+    queryset = PlantHeight.objects.all()
+    serializer_class = PlantHeightSerializer
+    lookup_field = 'id'
+    lookup_url_kwarg = 'id'

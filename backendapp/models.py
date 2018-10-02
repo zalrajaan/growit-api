@@ -145,3 +145,13 @@ class TrackingHistory(models.Model):
 
     def __str__(self):
         return str(self.plant)
+
+class PlantHeight(models.Model):
+
+    days = models.DateField(auto_now_add=True)
+    active = models.BooleanField()
+    height = models.DecimalField(max_digits=10, decimal_places=2)
+    track = models.ForeignKey(TrackingHistory,on_delete=models.CASCADE )
+
+    def __str__(self):
+        return "%s %s %s" %(self.id, self.track.id, self.track.plant.name)

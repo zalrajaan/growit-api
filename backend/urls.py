@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy
+from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy, PlantHeightCreateView, PlantHeightUpdateView
 from rest_framework_jwt.views import obtain_jwt_token
 
 
@@ -27,8 +27,11 @@ urlpatterns = [
 
 #TrackingHistory
     path('track/', TrackingHistoryCreateView.as_view(), name='track'),
-    path('tracklist/<int:user_id>', TrackingHistoryListView.as_view(), name='tracklist'),
+    path('tracklist/<int:user_id>/', TrackingHistoryListView.as_view(), name='tracklist'),
     path('trackupdate/<int:id>/', TrackingHistoryUpdateView.as_view(), name='trackupdate'),
+#PlantHeight
+    path('heightcreate/', PlantHeightCreateView.as_view(), name='heightcreate'),
+    path('heightupdate/<int:id>/', PlantHeightUpdateView.as_view(), name='heightupdate'),
 
 #HTMLPage
     path('privacypolicy/', privacy_policy, name='privacypolicy'),
