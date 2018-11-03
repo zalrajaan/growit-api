@@ -25,7 +25,7 @@ SECRET_KEY = 's$c)9neuz6$1v+mby)-qu#n%^y_r!=c*edyulmm_xc&l_axqh^'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['127.0.0.1','178.128.205.28', '0.0.0.0','*','142.93.163.231']
+ALLOWED_HOSTS = ['127.0.0.1','178.128.205.28', '0.0.0.0','*','142.93.163.231', '46.101.97.0']
 
 # Application definition
 
@@ -79,18 +79,29 @@ if DEBUG:
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),}}
 
+# else:
+#     DATABASES = {
+#         'default': {
+#             'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#             'NAME': 'django',
+#             'USER': 'django',
+#             'PASSWORD': 'a17df4984fa49821235e0616ad784674',
+#             'HOST': 'localhost',
+#             'PORT': '',
+#         }
+#     }
+#test server
 else:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'django',
             'USER': 'django',
-            'PASSWORD': 'a17df4984fa49821235e0616ad784674',
+            'PASSWORD': '95c0ac034b7c1e8b86116347de8f3c65',
             'HOST': 'localhost',
             'PORT': '',
         }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators

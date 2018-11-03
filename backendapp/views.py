@@ -47,16 +47,20 @@ class CreateorderAPIView(APIView):
         cart = request.data["items"]
         order_obj = Order.objects.create(user=request.user)
         print (request)
+        response = []
         for order in cart:
             print (order)
             product_id = order.get("productID")
             quantity = order.get("quantity")
             product_obj = Product.objects.get(id=product_id)
-            product_item = ProductItem.objects.create(
-                quantity=quantity, order=order_obj, product=product_obj)
-            product_obj.quantity = product_obj.quantity - int(quantity)
-            product_obj.save()
-        return Response(status=status.HTTP_201_CREATED)
+            if product_obj.quantity >= quantity:
+                product_item = ProductItem.objects.create(
+                    quantity=quantity, order=order_obj, product=product_obj)
+                product_obj.quantity = product_obj.quantity - int(quantity)
+                product_obj.save()
+            else:
+                response.append({'id':'', 'msg':''})
+        return Response(response)
 
 class DetailViewPlant(RetrieveAPIView):
     queryset = Plant.objects.all()

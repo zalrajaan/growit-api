@@ -88,6 +88,10 @@ class Plant(Product):
     stage_3det = models.TextField(default="a")
     stage_4det = models.TextField(default="a")
     tracking_code = models.TextField(default="a")
+    lighting_frequency = models.IntegerField(default=1)
+    #scientific_name_ar = models.CharField(max_length=120, default="a")
+
+
 
     def __str__(self):
         return self.name
