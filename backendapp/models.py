@@ -89,7 +89,8 @@ class Product(models.Model):
     img = models.ImageField()
     quantity = models.IntegerField()
     category= models.ForeignKey(Category, on_delete=models.CASCADE)
-   
+    #category_ar= models.ForeignKey(Category, on_delete=models.CASCADE) check with hamza
+
     
     def __str__(self):
         return self.name
