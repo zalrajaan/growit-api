@@ -43,6 +43,33 @@ sizechoices = (
         ('tall', 'tall'),
 
     )
+#-*- coding: utf-8 -*-
+
+care_level_choices_ar = (
+        ('سهل', 'سهل'),
+        ('متوسط', 'متوسط'),
+        ('متقدم', 'متقدم'),
+    )
+lighting_level_ar = (
+        ('قليل', 'قليل'),
+        ('متوسط', 'متوسط'),
+        ('قوي', 'قوي'),
+    )
+season_type_ar = (
+
+        ('صيف', 'صيف'),
+        ('خريف', 'خريف'),
+        ('ربيع', 'ربيع'),
+        ('شتاء', 'شتاء'),
+
+    )
+sizechoices_ar = (
+
+        ('سطح المكتب', 'سطح المكتب'),
+        ('ارضي', 'ارضي'),
+        ('طويل', 'طويل'),
+
+    )
 
 class Category(models.Model):
     category= models.CharField(max_length=120)
@@ -88,9 +115,13 @@ class Plant(Product):
     stage_3det = models.TextField(default="a")
     stage_4det = models.TextField(default="a")
     tracking_code = models.TextField(default="a")
-    lighting_frequency = models.IntegerField(default=1)
-    #scientific_name_ar = models.CharField(max_length=120, default="a")
-
+    # lighting_frequency = models.IntegerField(default=1)
+    # scientific_name_ar = models.CharField(max_length=120, default="a")
+    # color_ar = models.CharField(max_length=120)
+    # care_level_ar = models.CharField(max_length=120, choices= care_level_choicesـar)
+    # lighting_ar = models.CharField(max_length=120, choices= lighting_levelـar)
+    # size_ar = models.CharField(max_length=120, choices= sizechoices_ar)
+    # season_ar = models.CharField(max_length=120, choices= season_type_ar)
 
 
     def __str__(self):
