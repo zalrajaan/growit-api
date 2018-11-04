@@ -118,8 +118,8 @@ class Plant(Product):
     lighting_frequency = models.IntegerField(default=1)
     scientific_name_ar = models.CharField(max_length=120, default="a")
     color_ar = models.CharField(max_length=120)
-    care_level_ar = models.CharField(max_length=120, choices= care_level_choicesـar)
-    lighting_ar = models.CharField(max_length=120, choices= lighting_levelـar)
+    care_level_ar = models.CharField(max_length=120, choices= care_level_choices_ar)
+    lighting_ar = models.CharField(max_length=120, choices= lighting_level_ar)
     size_ar = models.CharField(max_length=120, choices= sizechoices_ar)
     season_ar = models.CharField(max_length=120, choices= season_type_ar)
 
