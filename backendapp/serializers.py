@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Plant, Accessory, Product,Category, Stage, PlantCycle, Order, ProductItem, Profile, TrackingHistory, PlantHeight
+from .models import Plant, Accessory, Product,Category, PlantCycle, Order, ProductItem, Profile, TrackingHistory, PlantHeight
 from django.contrib.auth.models import User
 from rest_framework_jwt.settings import api_settings
 
@@ -52,10 +52,10 @@ class CategorySerializer(serializers.ModelSerializer):
         model = Category
         fields = '__all__'
 
-class StageSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Stage
-        fields = '__all__'
+# class StageSerializer(serializers.ModelSerializer):
+#     class Meta:
+#         model = Stage
+#         fields = '__all__'
 
 class Plant_cycleSerializer(serializers.ModelSerializer):
     class Meta:

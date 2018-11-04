@@ -73,6 +73,7 @@ sizechoices_ar = (
 
 class Category(models.Model):
     category= models.CharField(max_length=120)
+    category_ar= models.CharField(max_length=120, default="a")
     img = models.ImageField()
 
 
@@ -81,7 +82,9 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=120)
+    name_ar = models.CharField(max_length=120, default="a")
     description = models.TextField()
+    description_ar = models.TextField(default="a")
     price = models.IntegerField()
     img = models.ImageField()
     quantity = models.IntegerField()
@@ -114,6 +117,13 @@ class Plant(Product):
     stage_2det = models.TextField(default="a")
     stage_3det = models.TextField(default="a")
     stage_4det = models.TextField(default="a")
+    stage_1des_ar = models.CharField(max_length=120, default="a")
+    stage_2des_ar = models.CharField(max_length=120, default="a")
+    stage_3des_ar = models.CharField(max_length=120, default="a")
+    stage_1det_ar = models.TextField(default="a")
+    stage_2det_ar = models.TextField(default="a")
+    stage_3det_ar = models.TextField(default="a")
+    stage_4det_ar = models.TextField(default="a")
     tracking_code = models.TextField(default="a")
     lighting_frequency = models.IntegerField(default=1)
     scientific_name_ar = models.CharField(max_length=120, default="a")
@@ -133,13 +143,13 @@ class Accessory(Product):
         return self.name
 
 
-class Stage(models.Model):
-    days = models.IntegerField()
-    description = models.CharField(max_length=120)
-    details = models.TextField()
+# class Stage(models.Model):
+#     days = models.IntegerField()
+#     description = models.CharField(max_length=120)
+#     details = models.TextField()
 
-    def __str__(self):
-        return self.days
+#     def __str__(self):
+#         return self.days
 
 class PlantCycle(models.Model):
     plant_height_cm = models.IntegerField()
