@@ -117,11 +117,11 @@ class Plant(Product):
     tracking_code = models.TextField(default="a")
     lighting_frequency = models.IntegerField(default=1)
     scientific_name_ar = models.CharField(max_length=120, default="a")
-    color_ar = models.CharField(max_length=120)
-    care_level_ar = models.CharField(max_length=120, choices= care_level_choices_ar)
-    lighting_ar = models.CharField(max_length=120, choices= lighting_level_ar)
-    size_ar = models.CharField(max_length=120, choices= sizechoices_ar)
-    season_ar = models.CharField(max_length=120, choices= season_type_ar)
+    color_ar = models.CharField(max_length=120, default=[1])
+    care_level_ar = models.CharField(max_length=120, choices= care_level_choices_ar, default=care_level_choices_ar[1])
+    lighting_ar = models.CharField(max_length=120, choices= lighting_level_ar, default=lighting_level_ar[1])
+    size_ar = models.CharField(max_length=120, choices= sizechoices_ar, default=sizechoices_ar[1])
+    season_ar = models.CharField(max_length=120, choices= season_type_ar, default=season_type_ar[1])
 
 
     def __str__(self):
