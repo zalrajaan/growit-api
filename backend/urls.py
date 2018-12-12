@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import include
 from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy, PlantHeightCreateView, PlantHeightUpdateView
 from rest_framework_jwt.views import obtain_jwt_token
 
@@ -37,6 +38,8 @@ urlpatterns = [
     path('privacypolicy/', privacy_policy, name='privacypolicy'),
 
 
+#django-allauth
+	path('accounts/', include('allauth.urls')),
 
 
 ]
