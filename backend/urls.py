@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
-from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy, PlantHeightCreateView, PlantHeightUpdateView
+from backendapp.views import PlantsList, UserCreateAPIView, AccessoriesList,DetailViewPlant, DetailViewAccessories, CustomerOrder, CreateorderAPIView, ProfileCreateAPIView, ProfileUpdateView,CategoryList, ProfileDetailAPIView, TrackingHistoryCreateView, TrackingHistoryListView, TrackingHistoryUpdateView, privacy_policy, PlantHeightCreateView, PlantHeightUpdateView,google_verification
 from rest_framework_jwt.views import obtain_jwt_token
 
 
@@ -41,5 +41,7 @@ urlpatterns = [
 #django-allauth
 	path('accounts/', include('allauth.urls')),
 
+#google verification
+	path('googleverification/', google_verification, name='googleverification'),
 
 ]

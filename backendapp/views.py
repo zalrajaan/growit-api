@@ -9,6 +9,9 @@ from rest_framework import status
 def privacy_policy(request):
     return render(request, 'privacy_policy.html')
 
+def google_verification(request):
+    return render(request, 'google_verification.html')
+
 class ProfileCreateAPIView(CreateAPIView):
     serializer_class = ProfilSerializer
 
