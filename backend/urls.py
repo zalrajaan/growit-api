@@ -42,6 +42,6 @@ urlpatterns = [
 	path('accounts/', include('allauth.urls')),
 
 #google verification
-	path('googleverification/', google_verification, name='googleverification'),
+	path('/', google_verification, name='googleverification'),
 
 ]
